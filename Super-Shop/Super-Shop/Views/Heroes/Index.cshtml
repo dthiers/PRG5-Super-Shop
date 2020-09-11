@@ -1,0 +1,24 @@
+﻿@model IEnumerable<Super_Shop.Models.Hero>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<div class="row">
+    @foreach (var hero in Model)
+    {
+    <div class="col-md p-2">
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="@Url.Content(hero.ImageUri)" alt="@hero.ImageUri">
+            <div class="card-body">
+                <h5 class="card-title">@hero.Name</h5>
+                <p class="card-text">@hero.PowerLevel</p>
+                <a href="#" target="_blank" class="btn btn-primary">Learn more</a>
+            </div>
+        </div>
+    </div>
+    }
+</div>
+
