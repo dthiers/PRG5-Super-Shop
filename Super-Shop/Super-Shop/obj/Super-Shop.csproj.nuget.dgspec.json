@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Github\\avans-prg5\\PRG5-Super-Shop\\Super-Shop\\Super-Shop\\Super-Shop.csproj": {}
+    "C:\\Projects\\dotnet\\PRG5-Super-Shop\\Super-Shop\\Super-Shop\\Super-Shop.csproj": {}
   },
   "projects": {
-    "C:\\Github\\avans-prg5\\PRG5-Super-Shop\\Super-Shop\\Super-Shop\\Super-Shop.csproj": {
+    "C:\\Projects\\dotnet\\PRG5-Super-Shop\\Super-Shop\\Super-Shop\\Super-Shop.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Github\\avans-prg5\\PRG5-Super-Shop\\Super-Shop\\Super-Shop\\Super-Shop.csproj",
+        "projectUniqueName": "C:\\Projects\\dotnet\\PRG5-Super-Shop\\Super-Shop\\Super-Shop\\Super-Shop.csproj",
         "projectName": "Super-Shop",
-        "projectPath": "C:\\Github\\avans-prg5\\PRG5-Super-Shop\\Super-Shop\\Super-Shop\\Super-Shop.csproj",
-        "packagesPath": "C:\\Users\\links\\.nuget\\packages\\",
-        "outputPath": "C:\\Github\\avans-prg5\\PRG5-Super-Shop\\Super-Shop\\Super-Shop\\obj\\",
+        "projectPath": "C:\\Projects\\dotnet\\PRG5-Super-Shop\\Super-Shop\\Super-Shop\\Super-Shop.csproj",
+        "packagesPath": "C:\\Users\\dier\\.nuget\\packages\\",
+        "outputPath": "C:\\Projects\\dotnet\\PRG5-Super-Shop\\Super-Shop\\Super-Shop\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\links\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\dier\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -26,6 +26,7 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
             "projectReferences": {}
           }
         },
@@ -37,6 +38,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "dependencies": {
             "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation": {
               "target": "Package",
@@ -44,7 +46,7 @@
             },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
-              "version": "[3.1.4, )"
+              "version": "[3.1.5, )"
             }
           },
           "imports": [
@@ -65,7 +67,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     }

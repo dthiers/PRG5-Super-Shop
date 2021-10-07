@@ -22,5 +22,18 @@ namespace Super_Shop.Controllers
             var heroes = _database.GetHeroes();
             return View(heroes);
         }
+
+        public IActionResult Details(int id)
+        {
+            if (id > 0)
+            {
+                var hero = _database.GetHero(id);
+                if (hero != null)
+                {
+                    return View(hero);
+                }
+            }
+            return RedirectToAction("index");
+        }
     }
 }

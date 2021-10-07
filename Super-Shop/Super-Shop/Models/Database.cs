@@ -24,9 +24,9 @@ namespace Super_Shop.Models
             };
 
             _teams = new List<Team>() {
-                new Team() { Name = "The dream team", MemberIds = new []{1, 2, 3 }, ImageUri = "" },
-                new Team() { Name = "The unbrella accademy", MemberIds = new []{2, 3, 4 }, ImageUri = "" },
-                new Team() { Name = "Dharma Initiative", MemberIds = new []{3, 4, 5 }, ImageUri = "" },
+                new Team() { Id = 1, Name = "The dream team", MemberIds = new []{1, 2, 3 }, ImageUri = "" },
+                new Team() { Id = 2, Name = "The unbrella accademy", MemberIds = new []{2, 3, 4 }, ImageUri = "" },
+                new Team() { Id = 3, Name = "Dharma Initiative", MemberIds = new []{3, 4, 5 }, ImageUri = "" },
             };
 
             #endregion
@@ -40,18 +40,34 @@ namespace Super_Shop.Models
         public Hero GetHero(int heroId)
         {
             //TODO: Find and return hero
-            return null;
+            return _heroes.FirstOrDefault(h => h.Id == heroId);
         }
 
         public List<Team> GetTeams()
         {
+            _teams.ForEach(t =>
+            {
+                t.Members = new List<Hero>();
+                foreach(var ti in t.MemberIds)
+                {
+                    t.Members.Add(GetHero(ti));
+                }
+            });
             return _teams;
         }
 
         public Team GetTeamWithMembers(int teamId)
         {
             //TODO: find team and Populate members
-            return null;
+
+            var team = _teams.FirstOrDefault(t => t.Id == teamId);
+            if (team == null) return null;
+            foreach (var id in team.MemberIds)
+            {
+                team.Members.Add(GetHero(id));
+            }
+
+            return team;
         }
 
 
