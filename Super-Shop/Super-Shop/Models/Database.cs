@@ -28,12 +28,17 @@ namespace Super_Shop.Models
                 new Team() { Id = 2, Name = "The unbrella accademy", MemberIds = new []{2, 3, 4 }, ImageUri = "" },
                 new Team() { Id = 3, Name = "Dharma Initiative", MemberIds = new []{3, 4, 5 }, ImageUri = "" },
             };
-            // Populate List<Hero> team.Members 
-            _teams.ForEach(t =>
+            // Options 1
+            //Populate List<Hero> team.Members in anonymous function.
+           _teams.ForEach(t =>
             {
                 t.Members = new List<Hero>();
                 t.Members = t.MemberIds.Select(id => GetHero(id)).ToList();
             });
+
+            // Options 2
+            // pass defined method as delegate.
+            //_teams.ForEach(t => GetTeamWithMembers(t.Id));
 
             #endregion
         }
@@ -51,30 +56,23 @@ namespace Super_Shop.Models
 
         public List<Team> GetTeams()
         {
-            // Moved to constructor
-            //_teams.ForEach(t =>
-            //{
-            //    t.Members = new List<Hero>();
-            //    t.Members = t.MemberIds.Select(id => GetHero(id)).ToList();
-            //});
-
             return _teams;
         }
 
-        public Team GetTeamWithMembers(int teamId)
+
+#nullable enable
+        public Team? GetTeamWithMembers(int teamId)
         {
             //TODO: find team and Populate members
-
             var team = _teams.FirstOrDefault(t => t.Id == teamId);
-            if (team == null) return null;
-            foreach (var id in team.MemberIds)
+            if(team != null)
             {
-                team.Members.Add(GetHero(id));
+                team.Members = new List<Hero>();
+                team.Members = team.MemberIds.Select(id => GetHero(id)).ToList();
             }
-
             return team;
         }
-
+#nullable restore 
 
 
 
