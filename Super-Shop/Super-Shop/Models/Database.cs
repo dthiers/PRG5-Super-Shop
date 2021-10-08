@@ -28,18 +28,13 @@ namespace Super_Shop.Models
                 new Team() { Id = 2, Name = "The unbrella accademy", MemberIds = new []{2, 3, 4 }, ImageUri = "" },
                 new Team() { Id = 3, Name = "Dharma Initiative", MemberIds = new []{3, 4, 5 }, ImageUri = "" },
             };
-            // Options 1
+            
             //Populate List<Hero> team.Members in anonymous function.
-           _teams.ForEach(t =>
-            {
-                t.Members = new List<Hero>();
-                t.Members = t.MemberIds.Select(id => GetHero(id)).ToList();
-            });
-
-            // Options 2
-            // pass defined method as delegate.
-            //_teams.ForEach(t => GetTeamWithMembers(t.Id));
-
+            _teams.ForEach(t =>
+             {
+                 t.Members ??= new List<Hero>();
+                 t.Members = t.MemberIds.Select(id => GetHero(id)).ToList();
+             });
             #endregion
         }
 
