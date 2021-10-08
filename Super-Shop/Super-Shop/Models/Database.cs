@@ -28,6 +28,12 @@ namespace Super_Shop.Models
                 new Team() { Id = 2, Name = "The unbrella accademy", MemberIds = new []{2, 3, 4 }, ImageUri = "" },
                 new Team() { Id = 3, Name = "Dharma Initiative", MemberIds = new []{3, 4, 5 }, ImageUri = "" },
             };
+            // Populate List<Hero> team.Members 
+            _teams.ForEach(t =>
+            {
+                t.Members = new List<Hero>();
+                t.Members = t.MemberIds.Select(id => GetHero(id)).ToList();
+            });
 
             #endregion
         }
@@ -45,14 +51,13 @@ namespace Super_Shop.Models
 
         public List<Team> GetTeams()
         {
-            _teams.ForEach(t =>
-            {
-                t.Members = new List<Hero>();
-                foreach(var ti in t.MemberIds)
-                {
-                    t.Members.Add(GetHero(ti));
-                }
-            });
+            // Moved to constructor
+            //_teams.ForEach(t =>
+            //{
+            //    t.Members = new List<Hero>();
+            //    t.Members = t.MemberIds.Select(id => GetHero(id)).ToList();
+            //});
+
             return _teams;
         }
 
