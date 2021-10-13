@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
+using Super_Shop.Dal;
 using Super_Shop.Models;
 
 namespace Super_Shop.Controllers
@@ -14,12 +15,14 @@ namespace Super_Shop.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        private Database _database;
+        private readonly SupershopContext _context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(
+            ILogger<HomeController> logger,
+            SupershopContext context)
         {
             _logger = logger;
-            _database = new Database();
+            _context = context;
         }
 
         public IActionResult Index()
@@ -34,13 +37,8 @@ namespace Super_Shop.Controllers
 
         public IActionResult Contact()
         {
-            ViewBag.Employees = new List<Employee>()
-            {
-                new Employee() { Name = "Eric Kuijpers", Role = "CEO", ImageUri = "~/img/employees/eric.jfif" },
-                new Employee() { Name = "Carron Schilders", Role = "CTO", ImageUri = "~/img/employees/carron.jfif"  },
-                new Employee() { Name = "Stijn Smulders", Role = "Service desk", ImageUri = "~/img/employees/stijn.jfif"  },
-            };
-
+            var employees = _context.Employees.Where(e => e.Role != "Intern").ToList();
+            ViewBag.Employees = employees;
 
             ViewBag.Name = "Super Store inc.";
             ViewBag.address = "200 Park Ave";
@@ -50,11 +48,7 @@ namespace Super_Shop.Controllers
             ViewBag.Phone = "024-7856341";
             ViewBag.Mail = "helpdesk@super-store.net";
 
-            ViewBag.Interns = new List<Employee>()
-            {
-                new Employee() { Name = "Adam Sandler", Role = "Intern", ImageUri = "~/img/interns/adam.jpg" }
-            };
-
+            ViewBag.Interns = _context.Employees.Where(e => e.Role == "Intern").ToList();
 
             var contactViewModel = new ContactViewModel
             {
@@ -71,9 +65,8 @@ namespace Super_Shop.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    model.SelectedHero = _database.GetHero(model.SelectedHeroId);
+                    model.SelectedHero = _context.Heroes.Find(model.SelectedHeroId);
                     return View("ContactDetail", model);
-                    //return Content($"{model.Title} {model.SelectedHeroId} {model.Message} {model.Mail}");
                 }
                 return View();
             }
@@ -85,7 +78,7 @@ namespace Super_Shop.Controllers
 
         private IEnumerable<SelectListItem> GetHeroes()
         {
-            var heroes = _database.GetHeroes()
+            var heroes = _context.Heroes
                 .Select(h => new SelectListItem
                 {
                     Value = h.Id.ToString(),

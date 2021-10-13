@@ -18,8 +18,9 @@ namespace Super_Shop.Models
 
         public string ImageUri { get; set; }
 
+
         public int[] MemberIds { get; set; }
 
-        public List<Hero> Members { get; set; }
+        public ICollection<Hero> Heroes { get; set; }
     }
 }

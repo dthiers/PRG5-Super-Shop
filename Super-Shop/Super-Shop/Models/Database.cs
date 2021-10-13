@@ -32,8 +32,8 @@ namespace Super_Shop.Models
             //Populate List<Hero> team.Members in anonymous function.
             _teams.ForEach(t =>
              {
-                 t.Members ??= new List<Hero>();
-                 t.Members = t.MemberIds.Select(id => GetHero(id)).ToList();
+                 t.Heroes ??= new List<Hero>();
+                 t.Heroes = t.MemberIds.Select(id => GetHero(id)).ToList();
              });
             #endregion
         }
@@ -62,8 +62,8 @@ namespace Super_Shop.Models
             var team = _teams.FirstOrDefault(t => t.Id == teamId);
             if(team != null)
             {
-                team.Members = new List<Hero>();
-                team.Members = team.MemberIds.Select(id => GetHero(id)).ToList();
+                team.Heroes = new List<Hero>();
+                team.Heroes = team.MemberIds.Select(id => GetHero(id)).ToList();
             }
             return team;
         }

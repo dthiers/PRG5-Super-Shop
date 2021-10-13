@@ -7,10 +7,10 @@ namespace Super_Shop.Models
 {
     public class Employee
     {
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Role { get; set; }
 
         public string ImageUri { get; set; }
-
     }
 }
