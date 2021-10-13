@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Super_Shop.Entities;
+using System;
 using System.Collections.Generic;
 
 namespace Super_Shop.Models
@@ -17,5 +18,7 @@ namespace Super_Shop.Models
         //public Team Team { get; set; }
 
         public ICollection<Team> Teams {get; set; }
+
+        public ICollection<ContactFormRequest> ContactFormRequests { get; set; }
     }
 }

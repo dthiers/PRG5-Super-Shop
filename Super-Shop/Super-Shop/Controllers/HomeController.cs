@@ -5,8 +5,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Super_Shop.Dal;
+using Super_Shop.Entities;
 using Super_Shop.Models;
 
 namespace Super_Shop.Controllers
@@ -50,21 +52,33 @@ namespace Super_Shop.Controllers
 
             ViewBag.Interns = _context.Employees.Where(e => e.Role == "Intern").ToList();
 
-            var contactViewModel = new ContactViewModel
+            var contactFormRequestModel = new ContactFormRequestModel
             {
-                Heroes = GetHeroes()
+                // Heroes is a SelectList<{ name, id}>
+                Heroes = _context.Heroes.Select(h => new SelectListItem(h.Name, h.Id.ToString()))
             };
             
-            return View(contactViewModel);
+            return View(contactFormRequestModel);
         }
 
         [HttpPost]
-        public IActionResult SubmitContactForm(ContactViewModel model)
+        public IActionResult SubmitContactForm(ContactFormRequestModel model)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
+                    var contactFormRequest = new ContactFormRequest
+                    {
+                        Title = model.Title,
+                        HeroId = model.SelectedHeroId,
+                        Message = model.Message,
+                        Email = model.Email
+                    };
+
+                    _context.ContactFormRequests.Add(contactFormRequest);
+                    _context.SaveChanges();
+
                     model.SelectedHero = _context.Heroes.Find(model.SelectedHeroId);
                     return View("ContactDetail", model);
                 }
@@ -74,17 +88,6 @@ namespace Super_Shop.Controllers
             {
                 return View();
             }
-        }
-
-        private IEnumerable<SelectListItem> GetHeroes()
-        {
-            var heroes = _context.Heroes
-                .Select(h => new SelectListItem
-                {
-                    Value = h.Id.ToString(),
-                    Text = h.Name
-                });
-            return new SelectList(heroes, "Value", "Text");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

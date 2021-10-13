@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace Super_Shop.Models
 {
-    public class ContactViewModel
+    public class ContactFormRequestModel
     {
         public String Title { get; set; }
         public int SelectedHeroId { get; set; }
         public IEnumerable<SelectListItem> Heroes { get; set; }
         public Hero SelectedHero { get; set; }
         public String Message { get; set; }
-        public String Mail { get; set; }
+        public String Email { get; set; }
     }
 }
