@@ -4,22 +4,23 @@ using System.Linq;
 using System.Runtime.InteropServices.ComTypes;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Super_Shop.Dal;
 using Super_Shop.Models;
 
 namespace Super_Shop.Controllers
 {
     public class HeroesController : Controller
     {
-        private Database _database;
+        private readonly SupershopContext _context;
 
-        public HeroesController()
+        public HeroesController(SupershopContext context)
         {
-            _database = new Database();
+            _context = context;
         }
 
         public IActionResult Index()
         {
-            var heroes = _database.GetHeroes();
+            var heroes = _context.Heroes.ToList();
             return View(heroes);
         }
 
@@ -27,7 +28,7 @@ namespace Super_Shop.Controllers
         {
             if (id > 0)
             {
-                var hero = _database.GetHero(id);
+                var hero = _context.Heroes.Find(id);
                 if (hero != null)
                 {
                     return View(hero);
