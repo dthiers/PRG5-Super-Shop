@@ -1,0 +1,41 @@
+﻿@model Super_Shop.Models.ContactFormRequestModel 
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+@* titel, hero uit dropdown, bericht in text area, mailadres *@
+<h3>Contact form</h3>
+<div class="row">
+    <div class="col-md-6">
+
+        <form asp-controller="Contact" asp-action="SubmitContactForm" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Title"></label>
+                <input class="form-control" asp-for="Title" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SelectedHeroId"></label>
+                <select class="form-control" asp-for="SelectedHeroId" asp-items="Model.Heroes"></select>
+                <span asp-validation-for="SelectedHeroId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Message"></label>
+                <textarea class="form-control" asp-for="Message"></textarea>
+                <span asp-validation-for="Message" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email"></label>
+                <input class="form-control" asp-for="Email" type="email" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn btn-link">Submit form</button>
+        </form>
+
+    </div>
+</div>
+
+

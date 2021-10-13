@@ -26,10 +26,22 @@ namespace Super_Shop.Controllers
             _logger = logger;
             _context = context;
         }
-
         public IActionResult Index()
         {
-            return View();
+            var homeModel = new HomeModel
+            {
+                Name = "Super Store inc.",
+                Address = "200 Park Ave",
+                City = "New York",
+                Zipcode = "NY 10166",
+                Country = "Verenigde Staten",
+                Phone = "024-7856341",
+                Mail = "helpdesk@super-store.net",
+                Employees = _context.Employees.Where(e => e.Role != "Intern").ToList(),
+                Interns = _context.Employees.Where(e => e.Role == "Intern").ToList()
+            };
+
+            return View(homeModel);
         }
 
         public IActionResult Privacy()
@@ -37,58 +49,6 @@ namespace Super_Shop.Controllers
             return View();
         }
 
-        public IActionResult Contact()
-        {
-            var employees = _context.Employees.Where(e => e.Role != "Intern").ToList();
-            ViewBag.Employees = employees;
-
-            ViewBag.Name = "Super Store inc.";
-            ViewBag.address = "200 Park Ave";
-            ViewBag.City = "New York";
-            ViewBag.Postalcode = "NY 10166";
-            ViewBag.Country = "Verenigde Staten";
-            ViewBag.Phone = "024-7856341";
-            ViewBag.Mail = "helpdesk@super-store.net";
-
-            ViewBag.Interns = _context.Employees.Where(e => e.Role == "Intern").ToList();
-
-            var contactFormRequestModel = new ContactFormRequestModel
-            {
-                // Heroes is a SelectList<{ name, id}>
-                Heroes = _context.Heroes.Select(h => new SelectListItem(h.Name, h.Id.ToString()))
-            };
-            
-            return View(contactFormRequestModel);
-        }
-
-        [HttpPost]
-        public IActionResult SubmitContactForm(ContactFormRequestModel model)
-        {
-            try
-            {
-                if (ModelState.IsValid)
-                {
-                    var contactFormRequest = new ContactFormRequest
-                    {
-                        Title = model.Title,
-                        HeroId = model.SelectedHeroId,
-                        Message = model.Message,
-                        Email = model.Email
-                    };
-
-                    _context.ContactFormRequests.Add(contactFormRequest);
-                    _context.SaveChanges();
-
-                    model.SelectedHero = _context.Heroes.Find(model.SelectedHeroId);
-                    return View("ContactDetail", model);
-                }
-                return View();
-            }
-            catch
-            {
-                return View();
-            }
-        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

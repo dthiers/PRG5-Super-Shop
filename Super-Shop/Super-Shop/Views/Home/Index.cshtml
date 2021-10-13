@@ -1,8 +1,58 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@model Super_Shop.Models.HomeModel
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+@{
+    ViewData["Title"] = "Contacts";
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>Get in touch with us via our head office.</p>
+
+<address>
+    <strong>@Model.Name</strong><br>
+    @Model.Address<br>
+    @Model.Zipcode<br>
+    @Model.Country<br>
+    <abbr title="Phone">P:</abbr>@Model.Phone<br>
+    <abbr title="Mail">M:</abbr>@Model.Mail
+</address>
+
+<hr />
+
+<h2>Meet the team</h2>
+<div class="row">
+
+
+    @foreach (var employee in Model.Employees)
+    {
+        <div class="col-md-4">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="@Url.Content(employee.ImageUri)" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">@employee.Name</h5>
+                    <p class="card-text">@employee.Role</p>
+                    <a href="https://www.google.com/search?q=@employee.Name" target="_blank" class="btn btn-primary">Learn more</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<hr />
+
+
+<h3>The interns</h3>
+<div class="row">
+    @foreach (var intern in Model.Interns)
+    {
+        <div class="col-md-4">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="@Url.Content(intern.ImageUri)" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">@intern.Name</h5>
+                    <p class="card-text">@intern.Role</p>
+                    <a href="https://www.google.com/search?q=@intern.Name" target="_blank" class="btn btn-primary">Learn more</a>
+                </div>
+            </div>
+        </div>
+    }
 </div>

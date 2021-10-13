@@ -412,8 +412,6 @@ C:\Projects\dotnet\PRG5-Super-Shop\Super-Shop\Super-Shop\obj\Debug\netcoreapp3.1
 C:\Projects\dotnet\PRG5-Super-Shop\Super-Shop\Super-Shop\obj\Debug\netcoreapp3.1\Super-Shop.RazorCoreGenerate.cache
 C:\Projects\dotnet\PRG5-Super-Shop\Super-Shop\Super-Shop\obj\Debug\netcoreapp3.1\Razor\Views\Heroes\Details.cshtml.g.cs
 C:\Projects\dotnet\PRG5-Super-Shop\Super-Shop\Super-Shop\obj\Debug\netcoreapp3.1\Razor\Views\Heroes\Index.cshtml.g.cs
-C:\Projects\dotnet\PRG5-Super-Shop\Super-Shop\Super-Shop\obj\Debug\netcoreapp3.1\Razor\Views\Home\Contact.cshtml.g.cs
-C:\Projects\dotnet\PRG5-Super-Shop\Super-Shop\Super-Shop\obj\Debug\netcoreapp3.1\Razor\Views\Home\ContactDetail.cshtml.g.cs
 C:\Projects\dotnet\PRG5-Super-Shop\Super-Shop\Super-Shop\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
 C:\Projects\dotnet\PRG5-Super-Shop\Super-Shop\Super-Shop\obj\Debug\netcoreapp3.1\Razor\Views\Home\Privacy.cshtml.g.cs
 C:\Projects\dotnet\PRG5-Super-Shop\Super-Shop\Super-Shop\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Error.cshtml.g.cs
@@ -827,3 +825,6 @@ C:\Projects\dotnet\PRG5-Super-Shop\Super-Shop\Super-Shop\bin\Debug\netcoreapp3.1
 C:\Projects\dotnet\PRG5-Super-Shop\Super-Shop\Super-Shop\obj\Debug\netcoreapp3.1\Super-Shop.Views.pdb
 C:\Projects\dotnet\PRG5-Super-Shop\Super-Shop\Super-Shop\obj\Debug\netcoreapp3.1\Super-Shop.csproj.CopyComplete
 C:\Projects\dotnet\PRG5-Super-Shop\Super-Shop\Super-Shop\obj\Debug\netcoreapp3.1\Super-Shop.genruntimeconfig.cache
+C:\Projects\dotnet\PRG5-Super-Shop\Super-Shop\Super-Shop\obj\Debug\netcoreapp3.1\Razor\Views\Contact\Details.cshtml.g.cs
+C:\Projects\dotnet\PRG5-Super-Shop\Super-Shop\Super-Shop\obj\Debug\netcoreapp3.1\Razor\Views\Contact\Index.cshtml.g.cs
+C:\Projects\dotnet\PRG5-Super-Shop\Super-Shop\Super-Shop\obj\Debug\netcoreapp3.1\Super-Shop.csproj.AssemblyReference.cache
